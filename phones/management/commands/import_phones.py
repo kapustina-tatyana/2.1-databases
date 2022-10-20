@@ -12,7 +12,6 @@ class Command(BaseCommand):
         with open('phones.csv', 'r') as csvfile:
 
             phones = csv.reader(csvfile, delimiter=';')
-            # пропускаем заголовок
             next(phones)
             for phone in phones:
                 new_phone = Phone.objects.create(
@@ -22,3 +21,4 @@ class Command(BaseCommand):
                     lte_exist=phone[5],
                     slug=slugify(phone[1]),
                 )
+

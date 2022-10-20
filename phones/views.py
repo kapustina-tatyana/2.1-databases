@@ -3,7 +3,6 @@ from phones.models import Phone
 
 
 
-#     return redist):
 def index(request):
     return redirect('catalog')
 
@@ -28,8 +27,7 @@ def show_catalog(request):
 
 def show_product(request, slug):
     template = 'product.html'
-    phone_info = Phone.objects.all().filter(slug=slug)
-    context = {'catalog': phone_info, }
-
+    phone_info = Phone.objects.get(slug=slug)
+    context = {'phone': phone_info}
 
     return render(request, template, context)
